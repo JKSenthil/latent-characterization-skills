@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.utils
 from torch.autograd import Variable
 
-from utils import device
+from config import device
 
 class VRNN(nn.Module):
     """

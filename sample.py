@@ -3,7 +3,7 @@ import numpy as np
 
 from vrnn import VRNN
 from plot import plot
-from utils import device
+from config import device
 
 model = VRNN(6, 128, 30, 1)
 model.to(device)
