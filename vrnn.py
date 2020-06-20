@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.utils
 from torch.autograd import Variable
 
-from utils import device
+from config import device
 
 class VRNN(nn.Module):
     """
@@ -66,6 +66,8 @@ class VRNN(nn.Module):
         # encoder: input: phi(x), h
         self.encoder = nn.Sequential(
             nn.Linear(h_dim + h_dim, h_dim),
+            nn.ReLU(),
+            nn.Linear(h_dim, h_dim),
             nn.ReLU()
         )
         # VRE regard mean values sampled from z as the output
@@ -88,6 +90,8 @@ class VRNN(nn.Module):
         # decoder: input phi(z), h
         self.decoder_fea = nn.Sequential(
             nn.Linear(h_dim + h_dim, h_dim),
+            nn.ReLU(),
+            nn.Linear(h_dim, h_dim),
             nn.ReLU()
         )
         self.decoder_mean = nn.Sequential(
